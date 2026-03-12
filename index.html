@@ -41,6 +41,52 @@
             </a>
         </div>
     </div>
+    <!-- 16-bit Cartoon Bug -->
+    <div id="bug-container">
+        <svg id="pixel-bug" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body Base (common) -->
+            <rect x="3" y="3" width="10" height="10" rx="2" fill="#8a0b12" />
+            <rect x="4" y="4" width="8" height="8" rx="2" fill="#d1121c" />
+            
+            <g id="side-view">
+                <!-- Trail -->
+                <rect x="1" y="9" width="3" height="2" fill="#8a0b12" />
+                <rect x="0" y="10" width="1" height="1" fill="#d1121c" />
+                <!-- Antenna -->
+                <rect x="9" y="1" width="1" height="3" fill="#111" />
+                <!-- Legs -->
+                <rect class="leg1" x="5" y="13" width="2" height="2" fill="#111" />
+                <rect class="leg2" x="9" y="13" width="2" height="2" fill="#111" />
+                <!-- Highlight -->
+                <rect x="5" y="5" width="2" height="2" fill="#ff4d55" />
+                <!-- Eyes -->
+                <rect x="8" y="5" width="4" height="4" fill="#ffffff" />
+                <rect x="10" y="6" width="2" height="2" fill="#000000" />
+                <!-- Mouth/Teeth -->
+                <rect x="10" y="10" width="3" height="1" fill="#000000" />
+                <rect x="10" y="10" width="1" height="1" fill="#ffffff" />
+                <rect x="12" y="10" width="1" height="1" fill="#ffffff" />
+            </g>
+        
+            <g id="front-view" style="display: none;">
+                <!-- Antennae -->
+                <rect x="4" y="1" width="1" height="3" fill="#111" />
+                <rect x="11" y="1" width="1" height="3" fill="#111" />
+                <!-- Legs -->
+                <rect x="5" y="13" width="2" height="2" fill="#111" />
+                <rect x="9" y="13" width="2" height="2" fill="#111" />
+                <!-- Eyes front -->
+                <rect x="4" y="6" width="3" height="3" fill="#ffffff" />
+                <rect x="5" y="7" width="1" height="1" fill="#000000" />
+                <rect x="9" y="6" width="3" height="3" fill="#ffffff" />
+                <rect x="10" y="7" width="1" height="1" fill="#000000" />
+                <!-- Mouth front -->
+                <rect x="6" y="11" width="4" height="1" fill="#000000" />
+                <rect x="6" y="11" width="1" height="1" fill="#ffffff" />
+                <rect x="9" y="11" width="1" height="1" fill="#ffffff" />
+            </g>
+        </svg>
+    </div>
 
     <script src="script.js"></script>
 </body>
