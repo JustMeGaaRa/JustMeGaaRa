@@ -61,8 +61,13 @@ function triggerBug() {
     // Force reflow
     void bugContainer.offsetWidth;
 
+    // Calculate time based on a constant speed (pixels per second)
+    const speed = 250; 
+    const walkInDistance = (window.innerWidth / 2) + 100;
+    const walkInTime = walkInDistance / speed; // Time in seconds
+    
     // Start running in
-    bugContainer.style.transition = 'transform 2.5s linear';
+    bugContainer.style.transition = `transform ${walkInTime}s linear`;
     bugContainer.style.transform = `translateX(${window.innerWidth / 2}px)`;
     bugSvg.classList.add('bug-running');
     
@@ -86,9 +91,12 @@ function triggerBug() {
                 
                 // Run off screen
                 setTimeout(() => {
+                    const walkOutDistance = (window.innerWidth / 2) + 100;
+                    const walkOutTime = walkOutDistance / speed;
+                    
                     bugSvg.style.transition = 'none';
                     bugSvg.classList.add('bug-running');
-                    bugContainer.style.transition = 'transform 2.5s linear';
+                    bugContainer.style.transition = `transform ${walkOutTime}s linear`;
                     bugContainer.style.transform = `translateX(${window.innerWidth + 100}px)`;
                     
                     // Reset for next time
@@ -96,12 +104,12 @@ function triggerBug() {
                         bugSvg.classList.remove('bug-running');
                         bugContainer.style.transition = 'none';
                         bugContainer.style.transform = `translateX(-100px)`; 
-                    }, 2600);
+                    }, (walkOutTime * 1000) + 100);
                     
                 }, 300); 
             }, 2000); 
         }, 300); 
-    }, 2500); 
+    }, walkInTime * 1000); 
 }
 
 // Ensure the bug runs once shortly after load

@@ -146,8 +146,13 @@ h1 {
 
 /* Responsive Fixes */
 @media (max-width: 768px) {
+    .main-container {
+        padding: 0 1rem;
+    }
+
     h1 {
-        font-size: clamp(2.5rem, 18vw, 6rem);
+        /* Adjusted the clamp so it fits inside smaller viewports (e.g. 320px) without clipping */
+        font-size: clamp(1.8rem, 11vw, 4rem);
     }
 
     #cursor-container {
