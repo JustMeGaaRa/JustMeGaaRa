@@ -1,0 +1,168 @@
+:root {
+    --bg-color: #030303;
+    /* More vibrant black */
+    --text-color: #ffffff;
+    /* Softer Aurora palette for professionalism */
+    --aurora-1: #00f2ff;
+    --aurora-2: #0072ff;
+    --aurora-3: #7000ff;
+    --aurora-4: #00f2ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* The Custom Cursor Light Effect Container */
+#cursor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: screen;
+}
+
+#cursor-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    /* Added more stops to fix Firefox "ringing" color banding */
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.05) 30%, 
+        rgba(255, 255, 255, 0.02) 60%, 
+        rgba(255, 255, 255, 0) 80%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1), height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#cursor-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.main-container {
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    /* Ensures it fits screen width perfectly without wrapping */
+    font-size: clamp(2rem, 13vw, 15rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+    user-select: none;
+    white-space: nowrap;
+
+    /* Smoother Aurora Gradient Animation */
+    background: linear-gradient(90deg,
+            #fff 0%,
+            var(--aurora-1) 25%,
+            var(--aurora-3) 50%,
+            var(--aurora-2) 75%,
+            #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: aurora-flow 12s linear infinite;
+}
+
+@keyframes aurora-flow {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.links-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-link {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    gap: 12px;
+}
+
+.link-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.social-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    /* Removed translateY to prevent "jumping" */
+}
+
+.social-link svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5px;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(2.5rem, 18vw, 6rem);
+    }
+
+    #cursor-container {
+        display: none;
+    }
+
+    * {
+        cursor: auto;
+    }
+
+    .link-label {
+        display: none;
+    }
+
+    .social-link {
+        padding: 14px;
+    }
+}
